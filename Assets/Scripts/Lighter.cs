@@ -4,40 +4,45 @@ using UnityEngine;
 
 public class Lighter : MonoBehaviour
 {
-
     public GameObject lighter;
-    public GameObject Flames;
+    public GameObject flames;
 
     public AudioSource lighterSound;
 
     public bool isOn;
 
 
-    // Start is called before the first frame update
+
     void Start()
     {
         isOn = false;
-        Flames.SetActive(false);
+        flames.SetActive(false);
     }
 
-    // Update is called once per frame
+
+
+
     void Update()
     {
-        if (Input.GetKeyDown("Fire1") && lighter.activeInHierarchy)
+        if (Input.GetButtonDown("Fire1") && lighter.activeInHierarchy)
         {
-            Flames.SetActive(true);
+            flames.SetActive(true);
             lighterSound.Play();
             isOn = true;
         }
 
-        else if (Input.GetKeyDown("Fire1") && isOn) 
+        else if (Input.GetButtonDown("Fire1") && isOn)
         {
             return;
         }
-        if (Input.GetKeyDown("Fire2") && lighter.activeInHierarchy && isOn)
+
+        if (Input.GetButtonDown("Fire2") && lighter.activeInHierarchy && isOn)
         {
-            Flames.SetActive(false);
+            flames.SetActive(false);
             isOn = false;
         }
+
+
+
     }
 }
