@@ -6,8 +6,7 @@ public class ReadNotes : MonoBehaviour
 {
     public GameObject player;
     public GameObject noteUI;
-    public GameObject hud;
-    public GameObject inv;
+    
 
     public GameObject pickUpText;
 
