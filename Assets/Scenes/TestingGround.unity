@@ -952,11 +952,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5784895100341262149, guid: b5710161d3233c14fa5d2876940aa760,
-        type: 3}
-      propertyPath: flames
-      value: 
-      objectReference: {fileID: 8793510977082609501}
     - target: {fileID: 6712637213815232437, guid: b5710161d3233c14fa5d2876940aa760,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1012,12 +1007,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5710161d3233c14fa5d2876940aa760, type: 3}
---- !u!1 &8793510977082609501 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3288106944255435001, guid: b5710161d3233c14fa5d2876940aa760,
-    type: 3}
-  m_PrefabInstance: {fileID: 661924483058554844}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
