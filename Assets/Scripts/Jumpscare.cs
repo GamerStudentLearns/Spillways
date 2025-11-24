@@ -1,62 +1,34 @@
 using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement; 
 
 public class Jumpscare : MonoBehaviour
 {
-    [Tooltip("The model or object to show during the jumpscare.")]
-    public GameObject scareObject;
+    public AudioSource Scream;
+    public GameObject Player;
+    public GameObject JumpscareCam;
 
-    [Tooltip("How long the object stays visible.")]
-    public float scareDuration = 2f;
-
-    [Tooltip("Optional audio clip for the jumpscare.")]
-    public AudioSource scareSound;
-
-    private bool isScaring = false;
-
-    void Start()
-    {
-        // Ensure the scare object starts hidden
-        if (scareObject != null)
-        {
-            scareObject.SetActive(false);
-        }
-    }
+    private bool hasTriggered = false; 
 
     void OnTriggerEnter(Collider other)
     {
-        // Only trigger if the player enters
-        if (other.CompareTag("Player") && !isScaring)
-        {
-            StartCoroutine(DoJumpscare());
-        }
+        if (hasTriggered) return; 
+
+        hasTriggered = true; 
+
+        Scream.Play();
+        JumpscareCam.SetActive(true);
+        Player.SetActive(false);
+        StartCoroutine(EndJump());
     }
 
-    private System.Collections.IEnumerator DoJumpscare()
+    IEnumerator EndJump()
     {
-        isScaring = true;
+        yield return new WaitForSeconds(0.45f);
 
-        // Show the object
-        if (scareObject != null)
-        {
-            scareObject.SetActive(true);
-        }
-
-        // Play sound if assigned
-        if (scareSound != null)
-        {
-            scareSound.Play();
-        }
-
-        // Wait for the duration
-        yield return new WaitForSeconds(scareDuration);
-
-        // Hide the object again
-        if (scareObject != null)
-        {
-            scareObject.SetActive(false);
-        }
-
-        isScaring = false;
+        
+        SceneManager.LoadScene("Credits");
     }
 }
+
 
