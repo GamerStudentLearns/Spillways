@@ -765,7 +765,7 @@ PrefabInstance:
     - target: {fileID: 618808981191617649, guid: 583287bd710c5e0468419657ce364c43,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 6499
+      value: 6511
       objectReference: {fileID: 0}
     - target: {fileID: 1384952277457151193, guid: 583287bd710c5e0468419657ce364c43,
         type: 3}
@@ -781,6 +781,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FurnishedTunnel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824375101834381632, guid: 583287bd710c5e0468419657ce364c43,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 1972756974072438882, guid: 583287bd710c5e0468419657ce364c43,
         type: 3}
@@ -800,7 +805,7 @@ PrefabInstance:
     - target: {fileID: 2702871915542039099, guid: 583287bd710c5e0468419657ce364c43,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1569
+      value: 1581
       objectReference: {fileID: 0}
     - target: {fileID: 3383776525345905338, guid: 583287bd710c5e0468419657ce364c43,
         type: 3}
@@ -815,7 +820,7 @@ PrefabInstance:
     - target: {fileID: 4054748049739212439, guid: 583287bd710c5e0468419657ce364c43,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 6254
+      value: 6266
       objectReference: {fileID: 0}
     - target: {fileID: 5337211804072175827, guid: 583287bd710c5e0468419657ce364c43,
         type: 3}
@@ -840,7 +845,7 @@ PrefabInstance:
     - target: {fileID: 6382319313979283415, guid: 583287bd710c5e0468419657ce364c43,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 2916
+      value: 2928
       objectReference: {fileID: 0}
     - target: {fileID: 6418512427405421230, guid: 583287bd710c5e0468419657ce364c43,
         type: 3}
@@ -905,7 +910,7 @@ PrefabInstance:
     - target: {fileID: 7324068602662142487, guid: 583287bd710c5e0468419657ce364c43,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1787
+      value: 1799
       objectReference: {fileID: 0}
     - target: {fileID: 8459878106570607230, guid: 583287bd710c5e0468419657ce364c43,
         type: 3}

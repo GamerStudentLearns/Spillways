@@ -11,38 +11,27 @@ public class Lighter : MonoBehaviour
 
     public bool isOn;
 
-
-
     void Start()
     {
         isOn = false;
         flames.SetActive(false);
     }
 
-
-
-
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && lighter.activeInHierarchy)
+        // Turn ON
+        if (Input.GetButtonDown("Fire1") && lighter.activeInHierarchy && !isOn)
         {
             flames.SetActive(true);
-            lighterSound.Play();
+            lighterSound.Play();   // only plays when turning ON
             isOn = true;
         }
 
-        else if (Input.GetButtonDown("Fire1") && isOn)
-        {
-            return;
-        }
-
+        // Turn OFF
         if (Input.GetButtonDown("Fire2") && lighter.activeInHierarchy && isOn)
         {
             flames.SetActive(false);
             isOn = false;
         }
-
-
-
     }
 }
