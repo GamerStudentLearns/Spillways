@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tunnel5.unity
     guid: ddd79e0160996be499be73e560649f49
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 620837edba17ebd43b1fb337a3ac9ff1
   m_configObjects: {}
