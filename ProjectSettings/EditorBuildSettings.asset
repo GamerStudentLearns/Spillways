@@ -14,12 +14,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credandwarn/Warning.unity
     guid: 883319cc5a080214b8106f12c4db29d4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu/MainMenu2.unity
     guid: 4f773931da4f0da40806797dd9ce8ce4
   - enabled: 0
     path: Assets/Scenes/Menu/MainMenu.unity
     guid: 17a50cff582da3c4b919909eddd891b8
+  - enabled: 1
+    path: Assets/Scenes/Menu/upgradedMainMenu.unity
+    guid: de99e1d0f3f84954dbc8577a50b4bf5c
   - enabled: 0
     path: Assets/Scenes/Menu/Controls.unity
     guid: c84c3e6d70baed247ba520b9e5d8b651

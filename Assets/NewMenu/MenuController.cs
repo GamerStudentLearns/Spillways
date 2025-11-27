@@ -8,6 +8,10 @@ using UnityEngine.Rendering;
 
 public class MenuController : MonoBehaviour
 {
+    [Header("Levels To Load")]
+    public string newGameLevel;
+    private string levelToLoad;
+
     [Header("Audio Settings")]
     [SerializeField] private TMP_Text volumeTextValue = null;
     [SerializeField] private Slider volumeSlider = null;
@@ -148,7 +152,10 @@ public class MenuController : MonoBehaviour
         StartCoroutine(ComfirmationBox(1f));
 
     }
-
+    public void NewGameDialogYes()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(newGameLevel);
+    }
     public void ResetButton(string MenuType)
     {
         if (MenuType == "Graphics")

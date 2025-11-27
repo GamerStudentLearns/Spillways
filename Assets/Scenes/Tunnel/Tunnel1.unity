@@ -2262,6 +2262,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3288106944255435001, guid: b5710161d3233c14fa5d2876940aa760,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6437082768899864687, guid: b5710161d3233c14fa5d2876940aa760,
         type: 3}
       propertyPath: logCalibration

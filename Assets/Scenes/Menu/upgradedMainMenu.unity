@@ -1644,6 +1644,101 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &1693216586
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8468279685038421241, guid: 38b946244d14b0348937551aeff4488d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3652778
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468279685038421241, guid: 38b946244d14b0348937551aeff4488d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3652778
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468279685038421241, guid: 38b946244d14b0348937551aeff4488d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3652778
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468279685038421241, guid: 38b946244d14b0348937551aeff4488d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 537.08093
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468279685038421241, guid: 38b946244d14b0348937551aeff4488d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 198.10806
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468279685038421241, guid: 38b946244d14b0348937551aeff4488d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -141.00232
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468279685038421241, guid: 38b946244d14b0348937551aeff4488d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468279685038421241, guid: 38b946244d14b0348937551aeff4488d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468279685038421241, guid: 38b946244d14b0348937551aeff4488d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468279685038421241, guid: 38b946244d14b0348937551aeff4488d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468279685038421241, guid: 38b946244d14b0348937551aeff4488d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468279685038421241, guid: 38b946244d14b0348937551aeff4488d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468279685038421241, guid: 38b946244d14b0348937551aeff4488d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9123681040428628624, guid: 38b946244d14b0348937551aeff4488d,
+        type: 3}
+      propertyPath: m_Name
+      value: SpookyPause
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 38b946244d14b0348937551aeff4488d, type: 3}
+--- !u!114 &1693216587 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2724247421792642251, guid: 38b946244d14b0348937551aeff4488d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1693216586}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e856b03b49a364baa520fca4016d6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1834579048
 GameObject:
   m_ObjectHideFlags: 0
@@ -8417,9 +8512,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: ExitButton
+      - m_Target: {fileID: 1693216587}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12681,3 +12776,4 @@ SceneRoots:
   - {fileID: 984359653}
   - {fileID: 925393756}
   - {fileID: 1009609208}
+  - {fileID: 1693216586}

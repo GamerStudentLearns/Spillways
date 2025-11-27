@@ -22,8 +22,35 @@ public class Lighter : MonoBehaviour
     // internal state for rising-edge detection on analog trigger
     private bool prevTriggerPressed = false;
 
+    void Awake()
+    {
+        // Force lighter off early so other scripts can't leave it on at start.
+        isOn = false;
+        if (flames != null)
+            flames.SetActive(false);
+
+        if (lighterSound != null)
+            lighterSound.Stop();
+
+        // Prevent immediate toggle if trigger / button is already held at startup
+        float raw = 0f;
+        try
+        {
+            raw = Input.GetAxisRaw(rightTriggerAxis);
+        }
+        catch { raw = 0f; }
+
+        float value01 = Mathf.Clamp01((raw + 1f) * 0.5f);
+        prevTriggerPressed = (raw >= triggerThreshold || value01 >= triggerThreshold);
+
+        KeyCode triggerButton = (KeyCode)((int)KeyCode.JoystickButton0 + Mathf.Clamp(rightTriggerButtonIndex, 0, 19));
+        if (Input.GetKey(triggerButton))
+            prevTriggerPressed = true;
+    }
+
     void Start()
     {
+        // Keep Start behavior compatible (redundant safety).
         isOn = false;
         if (flames != null) flames.SetActive(false);
     }
