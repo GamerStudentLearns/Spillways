@@ -572,7 +572,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5906e019eb0854a42b57e25ce4068f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstepClip: {fileID: 8300000, guid: 804ed516d737a484a80a42ae3ba84bcd, type: 3}
+  footstepClips:
+  - {fileID: 8300000, guid: a7a24f382e5eadc4d951f7160ef49ae8, type: 3}
+  - {fileID: 8300000, guid: 45edb100885f77d4193f27511e19a862, type: 3}
+  - {fileID: 8300000, guid: 804ed516d737a484a80a42ae3ba84bcd, type: 3}
   stepInterval: 0.5
 --- !u!1 &3288106944255435001
 GameObject:

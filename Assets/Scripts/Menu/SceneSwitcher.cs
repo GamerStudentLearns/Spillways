@@ -21,7 +21,7 @@ public class SceneSwitcher : MonoBehaviour
         SceneManager.LoadScene(sceneToLoad);
 
         // Only unlock and show the cursor if the scene is MainMenu
-        if (sceneToLoad == "MainMenu")
+        if (sceneToLoad == "MainMenu2")
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

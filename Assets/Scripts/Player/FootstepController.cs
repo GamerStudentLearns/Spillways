@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class FootstepController : MonoBehaviour
 {
-    public AudioClip footstepClip;       // Assign your footstep sound in the Inspector
+    public AudioClip[] footstepClips;    // Assign 3+ footstep sounds in the Inspector
     public float stepInterval = 0.5f;    // Time between footsteps
 
     private AudioSource audioSource;
@@ -44,9 +44,11 @@ public class FootstepController : MonoBehaviour
 
     private void PlayFootstep()
     {
-        if (footstepClip != null)
+        if (footstepClips != null && footstepClips.Length > 0)
         {
-            audioSource.PlayOneShot(footstepClip);
+            // Pick a random clip from the array
+            int index = Random.Range(0, footstepClips.Length);
+            audioSource.PlayOneShot(footstepClips[index]);
         }
     }
 }
