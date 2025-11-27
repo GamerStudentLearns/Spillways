@@ -437,7 +437,9 @@ MonoBehaviour:
   jumpHeight: 2
   gravity: -15
   cameraTransform: {fileID: 3773479780590169672}
-  mouseSensitivity: 100
+  mouseSensitivity: 0.5
+  gamepadSensitivity: 150
+  invertY: 0
 --- !u!143 &1719748705018416843
 CharacterController:
   m_ObjectHideFlags: 0
