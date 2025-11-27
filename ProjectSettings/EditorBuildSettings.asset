@@ -9,33 +9,36 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/DevCredit.unity
+    path: Assets/Scenes/Credandwarn/DevCredit.unity
     guid: e11c156d6de16844a96fec998265f942
   - enabled: 1
-    path: Assets/Scenes/Warning.unity
+    path: Assets/Scenes/Credandwarn/Warning.unity
     guid: 883319cc5a080214b8106f12c4db29d4
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/Menu/MainMenu2.unity
+    guid: 4f773931da4f0da40806797dd9ce8ce4
+  - enabled: 0
+    path: Assets/Scenes/Menu/MainMenu.unity
     guid: 17a50cff582da3c4b919909eddd891b8
-  - enabled: 1
-    path: Assets/Scenes/Controls.unity
+  - enabled: 0
+    path: Assets/Scenes/Menu/Controls.unity
     guid: c84c3e6d70baed247ba520b9e5d8b651
   - enabled: 1
-    path: Assets/Scenes/Tunnel1.unity
+    path: Assets/Scenes/Tunnel/Tunnel1.unity
     guid: d2e217583a89dfc4aac1fe23dc9381f7
   - enabled: 1
-    path: Assets/Scenes/Tunnel2.unity
+    path: Assets/Scenes/Tunnel/Tunnel2.unity
     guid: 2ce55420597f9be45841bbe7492e95e4
   - enabled: 1
-    path: Assets/Scenes/Tunnel3.unity
+    path: Assets/Scenes/Tunnel/Tunnel3.unity
     guid: b2734209a6a745049aba6ea1ae4b838a
   - enabled: 1
-    path: Assets/Scenes/Tunnel4.unity
+    path: Assets/Scenes/Tunnel/Tunnel4.unity
     guid: cc4844fb60716034989161e9f14c0d92
   - enabled: 1
-    path: Assets/Scenes/Tunnel5.unity
+    path: Assets/Scenes/Tunnel/Tunnel5.unity
     guid: ddd79e0160996be499be73e560649f49
   - enabled: 1
-    path: Assets/Scenes/Credits.unity
+    path: Assets/Scenes/Credandwarn/Credits.unity
     guid: 620837edba17ebd43b1fb337a3ac9ff1
   m_configObjects: {}
