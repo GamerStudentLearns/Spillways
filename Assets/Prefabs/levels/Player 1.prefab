@@ -417,7 +417,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -437,7 +437,7 @@ MonoBehaviour:
   jumpHeight: 2
   gravity: -15
   cameraTransform: {fileID: 3773479780590169672}
-  mouseSensitivity: 0.5
+  mouseSensitivity: 0.1
   gamepadSensitivity: 150
   invertY: 0
 --- !u!143 &1719748705018416843
@@ -10792,6 +10792,9 @@ MonoBehaviour:
   flames: {fileID: 3288106944255435001}
   lighterSound: {fileID: 7644434516101319420}
   isOn: 0
+  rightTriggerAxis: RightTrigger
+  rightTriggerButtonIndex: 7
+  triggerThreshold: 0.5
 --- !u!82 &7644434516101319420
 AudioSource:
   m_ObjectHideFlags: 0

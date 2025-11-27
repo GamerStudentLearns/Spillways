@@ -156,6 +156,7 @@ public class MenuController : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(newGameLevel);
     }
+
     public void ResetButton(string MenuType)
     {
         if (MenuType == "Graphics")
