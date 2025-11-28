@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -9,21 +11,35 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
+    // Assign in Inspector: the primary button to select when opening the menu
+    public GameObject firstSelectedButton;
 
-
-void Update ()
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (GameIsPaused) 
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
+        bool pausePressed = false;
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+            pausePressed = true;
+
+        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+            pausePressed = true;
+
+        var gp = Gamepad.current;
+        if (gp != null)
+        {
+            if ((gp.startButton != null && gp.startButton.wasPressedThisFrame) ||
+                (gp.selectButton != null && gp.selectButton.wasPressedThisFrame))
+            {
+                pausePressed = true;
+            }
+        }
+
+        if (pausePressed)
+        {
+            if (GameIsPaused)
+                Resume();
+            else
+                Pause();
         }
     }
 
@@ -35,6 +51,9 @@ void Update ()
         Time.timeScale = 1f;
         GameIsPaused = false;
 
+        // Clear selected object so it's not left selected when resuming
+        if (EventSystem.current != null)
+            EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void Pause()
@@ -44,25 +63,24 @@ void Update ()
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-    
+
+        // Ensure EventSystem highlights the default button for gamepad navigation
+        if (EventSystem.current != null && firstSelectedButton != null)
+        {
+            EventSystem.current.SetSelectedGameObject(firstSelectedButton);
+        }
     }
 
-    public void LoadMenu() 
+    public void LoadMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu2");
+        SceneManager.LoadScene("upgradedMainMenu");
         Debug.Log("Loading Menu...");
-    
     }
 
-
-
-    public void QuitGame() 
+    public void QuitGame()
     {
         Application.Quit();
         Debug.Log("Quitting Game...");
-    
     }
-
-    
 }

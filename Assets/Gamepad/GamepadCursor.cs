@@ -73,6 +73,7 @@ public class GamepadCursor : MonoBehaviour
             return;
         }
 
+        // Use the right stick for cursor movement instead of the left stick.
         Vector2 deltaValue = Gamepad.current.leftStick.ReadValue();
         deltaValue *= cursorSpeed * Time.deltaTime;
 
