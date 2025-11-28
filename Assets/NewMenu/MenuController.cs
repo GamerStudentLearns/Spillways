@@ -37,10 +37,6 @@ public class MenuController : MonoBehaviour
     [SerializeField] private TMP_Dropdown qualityDropdown;
     [SerializeField] private Toggle fullscreenToggle;
 
-    [Header("Resolution Dropdown")]
-    public TMP_Dropdown resolutionDropdown;
-    private Resolution[] resolutions;
-
     private int _qualityLevel;
     private bool _isFullScreen;
     private float _brightnessLevel;
@@ -51,47 +47,18 @@ public class MenuController : MonoBehaviour
     private void Start()
     {
         LoadAudioSettings();
-        resolutions = Screen.resolutions;
-        resolutionDropdown.ClearOptions();
-
-        List<string> options = new List<string>();
-
-        int currentResolutionIndex = 0;
-
-        for (int i = 0; i < resolutions.Length; i++)
-        {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
-            options.Add(option);
-            if (resolutions[i].width == Screen.currentResolution.width &&
-                resolutions[i].height == Screen.currentResolution.height)
-            {
-                currentResolutionIndex = i;
-            }
-        }
-
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
 
         LoadAudioSettings();
         LoadGraphicsSettings(); // IMPORTANT!
 
         // removed AutoExposure handling (URP/HDRP exposure override no longer controlled here)
-
-        // your resolution setup code...
     }
-
-    public void SetResolution(int resolutionIndex)
-    {
-        Resolution resolution = resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-    }
-
 
     public void SetVolume(float volume)
     {
         AudioListener.volume = volume;
-        volumeTextValue.text = volume.ToString("0.0");
+        if (volumeTextValue != null)
+            volumeTextValue.text = volume.ToString("0.0");
     }
 
     public void VolumeApply()
@@ -103,18 +70,18 @@ public class MenuController : MonoBehaviour
     public void SetKeyboardSensitivity(float sensitivity)
     {
         mainKeyboardSensitivity = Mathf.RoundToInt(sensitivity);
-        KeyboardSensitivityTextValue.text = sensitivity.ToString("0");
+        if (KeyboardSensitivityTextValue != null)
+            KeyboardSensitivityTextValue.text = sensitivity.ToString("0");
     }
 
     public void GameplayApply()
     {
-        if (invertYToggle.isOn)
+        if (invertYToggle != null)
         {
-            PlayerPrefs.SetInt("masterInvertY", 1);
-        }
-        else
-        {
-            PlayerPrefs.SetInt("masterInvertY", 0);
+            if (invertYToggle.isOn)
+                PlayerPrefs.SetInt("masterInvertY", 1);
+            else
+                PlayerPrefs.SetInt("masterInvertY", 0);
         }
 
         PlayerPrefs.SetFloat("masterSen", mainKeyboardSensitivity);
@@ -124,7 +91,8 @@ public class MenuController : MonoBehaviour
     public void SetBrightness(float brightness)
     {
         _brightnessLevel = brightness;
-        brightnessTextValue.text = brightness.ToString("0.0");
+        if (brightnessTextValue != null)
+            brightnessTextValue.text = brightness.ToString("0.0");
         // Exposure override removed — brightness value is saved/applied via GraphicsApply
     }
 
@@ -161,35 +129,46 @@ public class MenuController : MonoBehaviour
     {
         if (MenuType == "Graphics")
         {
-            brightnessSlider.value = defaultBrightness;
-            brightnessTextValue.text = defaultBrightness.ToString("0.0");
+            if (brightnessSlider != null)
+            {
+                brightnessSlider.value = defaultBrightness;
+                brightnessTextValue.text = defaultBrightness.ToString("0.0");
+            }
 
-            qualityDropdown.value = 2;
-            QualitySettings.SetQualityLevel(2);
+            if (qualityDropdown != null)
+            {
+                qualityDropdown.value = 2;
+                QualitySettings.SetQualityLevel(2);
+            }
 
-            fullscreenToggle.isOn = false;
-            Screen.fullScreen = false;
+            if (fullscreenToggle != null)
+            {
+                fullscreenToggle.isOn = false;
+                Screen.fullScreen = false;
+            }
 
-            Resolution currentResolution = Screen.currentResolution;
-            Screen.SetResolution(currentResolution.width, currentResolution.height, Screen.fullScreen);
-            resolutionDropdown.value = resolutions.Length;
             GraphicsApply();
         }
 
         if (MenuType == "Audio")
         {
             AudioListener.volume = defaultVolume;
-            volumeSlider.value = defaultVolume;
-            volumeTextValue.text = defaultVolume.ToString("0.0");
+            if (volumeSlider != null)
+                volumeSlider.value = defaultVolume;
+            if (volumeTextValue != null)
+                volumeTextValue.text = defaultVolume.ToString("0.0");
             VolumeApply();
         }
 
         if (MenuType == "Gameplay")
         {
-            KeyboardSensitivityTextValue.text = defaultSen.ToString("0");
-            KeyboardSensitivitySlider.value = defaultSen;
+            if (KeyboardSensitivityTextValue != null)
+                KeyboardSensitivityTextValue.text = defaultSen.ToString("0");
+            if (KeyboardSensitivitySlider != null)
+                KeyboardSensitivitySlider.value = defaultSen;
             mainKeyboardSensitivity = defaultSen;
-            invertYToggle.isOn = false;
+            if (invertYToggle != null)
+                invertYToggle.isOn = false;
             GameplayApply();
 
         }
@@ -202,8 +181,10 @@ public class MenuController : MonoBehaviour
             float volume = PlayerPrefs.GetFloat("masterVolume");
             AudioListener.volume = volume;
 
-            volumeSlider.value = volume;
-            volumeTextValue.text = volume.ToString("0.0");
+            if (volumeSlider != null)
+                volumeSlider.value = volume;
+            if (volumeTextValue != null)
+                volumeTextValue.text = volume.ToString("0.0");
         }
     }
 
@@ -215,8 +196,10 @@ public class MenuController : MonoBehaviour
             float brightness = PlayerPrefs.GetFloat("masterBrightness");
             _brightnessLevel = brightness;
 
-            brightnessSlider.value = brightness;
-            brightnessTextValue.text = brightness.ToString("0.0");
+            if (brightnessSlider != null)
+                brightnessSlider.value = brightness;
+            if (brightnessTextValue != null)
+                brightnessTextValue.text = brightness.ToString("0.0");
 
             // removed ApplyBrightness call — no direct exposure override control here
         }
@@ -227,7 +210,8 @@ public class MenuController : MonoBehaviour
         {
             int quality = PlayerPrefs.GetInt("masterQuality");
             _qualityLevel = quality;
-            qualityDropdown.value = quality;
+            if (qualityDropdown != null)
+                qualityDropdown.value = quality;
             QualitySettings.SetQualityLevel(quality);
         }
 
@@ -236,15 +220,19 @@ public class MenuController : MonoBehaviour
         {
             bool full = PlayerPrefs.GetInt("masterFullScreen") == 1;
             _isFullScreen = full;
-            fullscreenToggle.isOn = full;
+            if (fullscreenToggle != null)
+                fullscreenToggle.isOn = full;
             Screen.fullScreen = full;
         }
     }
 
     public IEnumerator ComfirmationBox(float duration)
     {
-        comfirmationPrompt.SetActive(true);
-        yield return new WaitForSeconds(duration);
-        comfirmationPrompt.SetActive(false);
+        if (comfirmationPrompt != null)
+        {
+            comfirmationPrompt.SetActive(true);
+            yield return new WaitForSeconds(duration);
+            comfirmationPrompt.SetActive(false);
+        }
     }
 }
