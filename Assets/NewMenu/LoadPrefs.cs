@@ -18,11 +18,7 @@ public class LoadPrefs : MonoBehaviour
     [SerializeField] private Slider brightnessSlider = null;
     [SerializeField] private TMP_Text brightnessTextValue = null;
 
-    [Header("Quality Level Settings")]
-    [SerializeField] private TMP_Dropdown qualityDropdown;
-
-    [Header("Fullscreen Settings")]
-    [SerializeField] private Toggle fullscreenToggle;
+    
 
     [Header("Sensitivity Settings")]
     [SerializeField] private TMP_Text KeyboardSensitivityTextValue = null;
@@ -48,27 +44,7 @@ public class LoadPrefs : MonoBehaviour
                 menuController.ResetButton("Audio");
             }
 
-            if (PlayerPrefs.HasKey("masterQuality"))
-            {
-                int localQuality = PlayerPrefs.GetInt("masterQuality");
-                qualityDropdown.value = localQuality;
-                QualitySettings.SetQualityLevel(localQuality);
-            }
-
-            if (PlayerPrefs.HasKey("masterFullscreen"))
-            {
-                int localFullscreen = PlayerPrefs.GetInt("masterFullscreen");
-                if (localFullscreen == 1)
-                {
-                    Screen.fullScreen = true;
-                    fullscreenToggle.isOn = true;
-                }
-                else
-                {
-                    Screen.fullScreen = false;
-                    fullscreenToggle.isOn = false;
-                }
-            }
+            
 
             if (PlayerPrefs.HasKey("masterBrightness"))
             {
