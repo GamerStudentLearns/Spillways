@@ -574,11 +574,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5906e019eb0854a42b57e25ce4068f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstepClips:
+  defaultFootsteps:
   - {fileID: 8300000, guid: a7a24f382e5eadc4d951f7160ef49ae8, type: 3}
   - {fileID: 8300000, guid: 45edb100885f77d4193f27511e19a862, type: 3}
   - {fileID: 8300000, guid: 804ed516d737a484a80a42ae3ba84bcd, type: 3}
-  stepInterval: 0.5
+  waterFootsteps:
+  - {fileID: 8300000, guid: 147fc786abf0fbd40959d6b58b989f79, type: 3}
+  - {fileID: 8300000, guid: 7e96bc649d98aa046800e17ec57fe86f, type: 3}
+  - {fileID: 8300000, guid: ce8078b5a8f857549bcc52cd45f7b8b2, type: 3}
+  metalFootsteps: []
+  defaultStepInterval: 0.5
+  waterStepInterval: 1
+  metalStepInterval: 0.3
 --- !u!1 &3288106944255435001
 GameObject:
   m_ObjectHideFlags: 0

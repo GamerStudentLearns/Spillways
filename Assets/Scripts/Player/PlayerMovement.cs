@@ -10,12 +10,15 @@ public class PlayerMovement : MonoBehaviour
     public float gravity = -9.81f;
     public Transform cameraTransform;
 
+    [Header("Zone Speed Multipliers")]
+    public float waterSpeedMultiplier = 0.5f; // 50% slower in water
+
     [Header("Look")]
     public float mouseSensitivity = 0.15f; // multiplier for mouse delta
     public float gamepadSensitivity = 150f; // degrees/sec per stick unit
     public bool invertY = false;
 
-    // Input System actions (created in code for simplicity)
+    // Input System actions
     private InputAction moveAction;
     private InputAction lookAction;
     private InputAction jumpAction;
@@ -24,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
     private float xRotation = 0f;
+
+    private float baseSpeed;       // original speed
+    private float currentSpeed;    // speed that changes depending on zone
 
     void Awake()
     {
@@ -67,7 +73,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
 
-        // initialize xRotation from current camera transform so we don't jump
+        baseSpeed = speed;
+        currentSpeed = baseSpeed;
+
         if (cameraTransform != null)
         {
             float e = cameraTransform.localEulerAngles.x;
@@ -78,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Ground check + gravity (same behavior as before)
+        // Ground check + gravity
         isGrounded = controller.isGrounded;
         if (isGrounded && velocity.y < 0f)
             velocity.y = -2f;
@@ -86,58 +94,54 @@ public class PlayerMovement : MonoBehaviour
         // Movement
         Vector2 moveInput = moveAction.ReadValue<Vector2>();
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
-        controller.Move(move * speed * Time.deltaTime);
+        controller.Move(move * currentSpeed * Time.deltaTime);
 
         // Jump
         if (jumpAction.WasPressedThisFrame() && isGrounded)
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
 
-        // Gravity application
+        // Gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
         // Look
         Vector2 rawLook = lookAction.ReadValue<Vector2>();
-
-        // Detect if mouse produced the input this frame (mouse delta non-zero)
         bool mouseUsed = Mouse.current != null && Mouse.current.delta.ReadValue().sqrMagnitude > 0.000001f;
 
-        float deltaX;
-        float deltaY;
+        float deltaX, deltaY;
         if (mouseUsed)
         {
-            // mouse delta is pixels -> scale by mouseSensitivity and Time.deltaTime
             deltaX = rawLook.x * mouseSensitivity;
             deltaY = rawLook.y * mouseSensitivity;
-            // multiply by 1 (not Time.deltaTime) — mouse delta is already framerate independent when using sensitivity as a small scalar
-            deltaX *= 1f;
-            deltaY *= 1f;
         }
         else
         {
-            // gamepad right stick is -1..1 -> treat as degrees/sec then * Time.deltaTime
             deltaX = rawLook.x * gamepadSensitivity * Time.deltaTime;
             deltaY = rawLook.y * gamepadSensitivity * Time.deltaTime;
         }
 
-        // invert if requested
         if (invertY) deltaY = -deltaY;
 
-        // If using mouse, apply per-frame rotation directly; if gamepad, delta is already in degrees and time-scaled
-        if (mouseUsed)
+        xRotation -= deltaY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        transform.Rotate(Vector3.up * deltaX);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("WaterZone"))
         {
-            xRotation -= deltaY;
-            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-            cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-            transform.Rotate(Vector3.up * deltaX);
+            currentSpeed = baseSpeed * waterSpeedMultiplier;
         }
-        else
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("WaterZone"))
         {
-            // gamepad: deltaX/deltaY already include Time.deltaTime
-            xRotation -= deltaY;
-            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-            cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-            transform.Rotate(Vector3.up * deltaX);
+            currentSpeed = baseSpeed;
         }
     }
 }
+
