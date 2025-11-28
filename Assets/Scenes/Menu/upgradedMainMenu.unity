@@ -921,7 +921,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'lighter on/off - Left Click
 
-    pause - Esc'
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5f4ec7b44e9460a4f8cb92f26346011e, type: 2}
   m_sharedMaterial: {fileID: 8586291805775874463, guid: 5f4ec7b44e9460a4f8cb92f26346011e,
@@ -23525,7 +23525,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 8007219932570266294}
-  firstSelectedButton: {fileID: 0}
 --- !u!4 &2727724129877154438
 Transform:
   m_ObjectHideFlags: 0

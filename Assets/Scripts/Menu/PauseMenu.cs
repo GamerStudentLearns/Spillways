@@ -11,9 +11,6 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
-    // Assign in Inspector: the primary button to select when opening the menu
-    public GameObject firstSelectedButton;
-
     void Update()
     {
         bool pausePressed = false;
@@ -63,12 +60,6 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-
-        // Ensure EventSystem highlights the default button for gamepad navigation
-        if (EventSystem.current != null && firstSelectedButton != null)
-        {
-            EventSystem.current.SetSelectedGameObject(firstSelectedButton);
-        }
     }
 
     public void LoadMenu()
