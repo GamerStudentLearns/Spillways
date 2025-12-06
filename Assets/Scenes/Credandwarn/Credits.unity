@@ -754,7 +754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1241719422
 RectTransform:
   m_ObjectHideFlags: 0
@@ -974,7 +974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1671128644
 RectTransform:
   m_ObjectHideFlags: 0
@@ -991,8 +991,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: -430.47833}
-  m_SizeDelta: {x: 243.0903, y: 527.8658}
+  m_AnchoredPosition: {x: 150, y: -484.22}
+  m_SizeDelta: {x: 243.0903, y: 635.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1671128645
 MonoBehaviour:
@@ -1056,6 +1056,9 @@ MonoBehaviour:
 
 
     MrMctwisted
+
+
+    FaceThePuppy
 
 
 
@@ -1210,7 +1213,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Project Manager \n\n3D Modelers\n\n\nProgrammer\n\nGraphic Designer\n\nLighting
     Design\n\nLevel Design\n\nLevel Detailing\n\n\nCreature Design\n\nAudio Design
-    \n\nTech support\n\nQuality assurance tester\n\n"
+    \n\nQuality assurance tester \n\n"
 --- !u!222 &2056125370
 CanvasRenderer:
   m_ObjectHideFlags: 0
